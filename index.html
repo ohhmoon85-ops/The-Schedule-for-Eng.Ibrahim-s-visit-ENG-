@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H.E. Eng. Ibrahim Mahlab's Visit to South Korea</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="75" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="50" cy="10" r="0.5" fill="rgba(255,255,255,0.05)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+
+        .info-section {
+            padding: 30px 40px;
+            background: #f8f9ff;
+            border-bottom: 1px solid #e0e5ff;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .info-card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            border-left: 4px solid #667eea;
+        }
+
+        .info-card h3 {
+            color: #1e3c72;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+
+        .info-card p {
+            color: #666;
+            line-height: 1.5;
+        }
+
+        .schedule-section {
+            padding: 40px;
+        }
+
+        .section-title {
+            text-align: center;
+            color: #1e3c72;
+            font-size: 2rem;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+
+        .day-schedule {
+            margin-bottom: 40px;
+            background: #fff;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e0e5ff;
+        }
+
+        .day-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px 30px;
+            font-size: 1.4rem;
+            font-weight: 600;
+            position: relative;
+        }
+
+        .day-header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, rgba(255,255,255,0.3), transparent);
+        }
+
+        .schedule-item {
+            padding: 20px 30px;
+            border-bottom: 1px solid #f0f0f0;
+            display: grid;
+            grid-template-columns: 120px 1fr 200px;
+            gap: 20px;
+            align-items: center;
+            transition: background-color 0.3s ease;
+        }
+
+        .schedule-item:hover {
+            background-color: #f8f9ff;
+        }
+
+        .schedule-item:last-child {
+            border-bottom: none;
+        }
+
+        .time {
+            font-weight: 600;
+            color: #667eea;
+            font-size: 1rem;
+            text-align: center;
+            padding: 8px 12px;
+            background: #f0f3ff;
+            border-radius: 8px;
+        }
+
+        .activity {
+            font-size: 1rem;
+            color: #333;
+            line-height: 1.5;
+        }
+
+        .location {
+            color: #666;
+            font-style: italic;
+            text-align: right;
+            padding: 8px 12px;
+            background: #f8f8f8;
+            border-radius: 8px;
+        }
+
+        .highlight {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            border-left: 4px solid #ff9a56;
+        }
+
+        .highlight .time {
+            background: rgba(255, 154, 86, 0.2);
+            color: #cc7a00;
+        }
+
+        .forum-section {
+            margin-top: 40px;
+            padding: 30px;
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            border-radius: 16px;
+            border: 2px solid #e0f2ff;
+        }
+
+        .forum-title {
+            color: #1e3c72;
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .forum-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .forum-item {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .forum-item strong {
+            color: #1e3c72;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .schedule-item {
+                grid-template-columns: 1fr;
+                gap: 10px;
+                text-align: center;
+            }
+
+            .location {
+                text-align: center;
+            }
+
+            .header h1 {
+                font-size: 1.8rem;
+            }
+
+            .container {
+                margin: 10px;
+            }
+
+            body {
+                padding: 10px;
+            }
+        }
+
+        .footer {
+            background: #1e3c72;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🇪🇬 H.E. Eng. Ibrahim Mahlab's Visit to South Korea</h1>
+            <p>September 8 - September 13, 2025</p>
+        </div>
+
+        <div class="info-section">
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>Visit Organizers</h3>
+                    <p>Maeil Media Group, Korea-Egypt Development Association (KEDA), Korea University's Middle East & Islamic Studies Center</p>
+                </div>
+                <div class="info-card">
+                    <h3>Distinguished Guest</h3>
+                    <p>H.E. Eng. Ibrahim Mahlab, Former Prime Minister of Egypt<br>Accompanied by: 2 BEK Group executives</p>
+                </div>
+                <div class="info-card">
+                    <h3>Visit Purpose</h3>
+                    <p>Enhancing Korea-Egypt economic and cultural cooperation & promoting bilateral investment</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="schedule-section">
+            <h2 class="section-title">Detailed Schedule</h2>
+
+            <div class="day-schedule">
+                <div class="day-header">September 8 (Monday) - Arrival</div>
+                <div class="schedule-item">
+                    <div class="time">10:45</div>
+                    <div class="activity">Arrival & Reception</div>
+                    <div class="location">Incheon Airport</div>
+                </div>
+                <div class="schedule-item">
+                    <div class="time">PM</div>
+                    <div class="activity">Hotel Check-in<br>Interviews with Maeil Business Newspaper / MBN News (15:00)</div>
+                    <div class="location">Hotel Shilla</div>
+                </div>
+                <div class="schedule-item">
+                    <div class="time">18:30</div>
+                    <div class="activity">Dinner hosted by Ambassador</div>
+                    <div class="location">Embassy of Egypt</div>
+                </div>
+            </div>
+
+            <div class="day-schedule">
+                <div class="day-header">September 9 (Tuesday) - World Knowledge Forum</div>
+                <div class="schedule-item highlight">
+                    <div class="time">08:30</div>
+                    <div class="activity">World Knowledge Forum (WKF) Opening Ceremony</div>
+                    <div class="location">Jangchung Gymnasium</div>
+                </div>
+                <div class="schedule-item">
+                    <div class="time">Lunch</div>
+                    <div class="activity">Luncheon</div>
+                    <div class="location">Hotel Shilla</div>
+                </div>
+                <div class="schedule-item">
+                    <div class="time">15:00</div>
+                    <div class="activity">Interview with Korea Herald (Reporter Sunjei Kumar)</div>
+                    <div class="location">Hotel Shilla</div>
+                </div>
+                <div class="schedule-item">
+                    <div class="time">18:00</div>
+                    <div class="activity">WKF VIP Dinner</div>
+                    <div class="location">-</div>
+                </div>
+            </div>
+
+            <div class="day-schedule">
+                <div class="day-header">September 10 (Wednesday) - Speech & Cooperation</div>
+                <div class="schedule-item">
+                    <div class="time">Morning</div>
+                    <div class="activity">Breakfast / Preparation for Speech</div>
+                    <div class="location">Hotel Shilla</div>
+                </div>
+                <div class="schedule-item highlight">
+                    <div class="time">12:00</div>
+                    <div class="activity">WKF Session Speech (H.E. Eng. Ibrahim Mahlab)</div>
+                    <div class="location">-</div>
+                </div>
+                <div class="schedule-item">
+                    <div class="time">Lunch</div>
+                    <div class="activity">Luncheon</div>
+                    <div class="location">Hotel Shilla</div>
+                </div>
+                <div class="schedule-item">
+                    <div class="time">15:00</div>
+                    <div class="activity">MOU for Industry-Academia Cooperation between New Giza University & Seoul National University of Science and Technology</div>
+                    <div class="location">Hotel Shilla</div>
+                </div>
+                <div class="schedule-item">
+                    <div class="time">15:30</div>
+                    <div class="activity">Meeting with Samsung C&T Vice President / Head of Egypt Division</div>
+                    <div class="location">Hotel Shilla</div>
+                </div>
+                <div class="schedule-item">
+                    <div class="time">18:00</div>
+                    <div class="activity">Dinner</div>
+                    <div class="location">Hotel Shilla</div>
+                </div>
+            </div>
+
+            <div class="day-schedule">
+                <div class="day-header">September 11 (Thursday) - Economic Forum</div>
+                <div class="schedule-item">
+                    <div class="time">10:00</div>
+                    <div class="activity">Meeting with businessmen hoping to collaborate and invest in Egypt (Six companies)</div>
+                    <div class="location">Hotel Shilla</div>
+                </div>
+                <div class="schedule-item">
+                    <div class="time">13:00</div>
+                    <div class="activity">Luncheon with businessmen</div>
+                    <div class="location">Hotel Shilla</div>
+                </div>
+                <div class="schedule-item highlight">
+                    <div class="time">14:00</div>
+                    <div class="activity">① Economic & Cultural Cooperation Forum<br>② Publication Ceremony: Biography of President El-Sisi<br>③ Nobel Peace Prize Nomination Preparation</div>
+                    <div class="location">Korea University "Chun Shin-il" Hall</div>
+                </div>
+                <div class="schedule-item">
+                    <div class="time">17:30</div>
+                    <div class="activity">Dinner with Forum Participants (Approximately 50 people expected)</div>
+                    <div class="location">Korean Restaurant "Mosim"</div>
+                </div>
+            </div>
+
+            <div class="day-schedule">
+                <div class="day-header">September 12 (Friday) - Medical & Health Check-up</div>
+                <div class="schedule-item">
+                    <div class="time">10:00</div>
+                    <div class="activity">Meeting with CEO of medical device company (Medical AI)</div>
+                    <div class="location">Hotel Shilla</div>
+                </div>
+                <div class="schedule-item">
+                    <div class="time">11:00</div>
+                    <div class="activity">Move to Samsung Medical Centre</div>
+                    <div class="location">-</div>
+                </div>
+                <div class="schedule-item highlight">
+                    <div class="time">12:00</div>
+                    <div class="activity">Medical Check-up (12:00-16:00)</div>
+                    <div class="location">Samsung Medical Centre</div>
+                </div>
+                <div class="schedule-item">
+                    <div class="time">Evening</div>
+                    <div class="activity">Dinner</div>
+                    <div class="location">Hotel Shilla</div>
+                </div>
+            </div>
+
+            <div class="day-schedule">
+                <div class="day-header">September 13 (Saturday) - Cultural Tour & Departure</div>
+                <div class="schedule-item">
+                    <div class="time">Morning</div>
+                    <div class="activity">Breakfast</div>
+                    <div class="location">Hotel Shilla</div>
+                </div>
+                <div class="schedule-item">
+                    <div class="time">AM/PM</div>
+                    <div class="activity">Cultural Tour</div>
+                    <div class="location">Gyeongbok Palace</div>
+                </div>
+                <div class="schedule-item">
+                    <div class="time">23:55</div>
+                    <div class="activity">Departure</div>
+                    <div class="location">Incheon Airport</div>
+                </div>
+            </div>
+
+            <div class="forum-section">
+                <div class="forum-title">🏛️ 30th Anniversary Economic & Cultural Cooperation Forum</div>
+                <div class="forum-details">
+                    <div class="forum-item">
+                        <strong>Date & Time</strong>
+                        September 11, 2025 (Thursday) 14:00~17:00
+                    </div>
+                    <div class="forum-item">
+                        <strong>Venue</strong>
+                        Korea University "Chun Shin-il" Hall Auditorium
+                    </div>
+                    <div class="forum-item">
+                        <strong>Organizers</strong>
+                        Korea-Egypt Development Association (KEDA), Korea University's Middle East & Islamic Studies Center
+                    </div>
+                    <div class="forum-item">
+                        <strong>Expected Participants</strong>
+                        Approximately 100 people (professors, academics, business leaders, media)
+                    </div>
+                    <div class="forum-item">
+                        <strong>Distinguished Guests</strong>
+                        H.E. Eng. Ibrahim Mahlab (Former PM), H.E. Dr. Khaled (Egyptian Ambassador), Former Speaker Kim Jin-pyo
+                    </div>
+                    <div class="forum-item">
+                        <strong>Special Gift</strong>
+                        Biography of President El-Sisi "New Egypt, The Tiger of the Nile"
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>A meaningful visit commemorating the 30th anniversary of Korea-Egypt diplomatic relations 🤝</p>
+        </div>
+    </div>
+</body>
+</html>
